@@ -1,1 +1,224 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Super Bowl | TiTi-apps</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="stage" id="stage" aria-label="Experiencia Super Bowl TiTi-apps">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span class="brand__name">TiTi-apps</span>
+      </div>
+      <div class="tag">🏈 Game Day Mode</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero__left">
+        <div class="playerWrap" aria-live="polite">
+          <!-- Estado 1: Jugador normal -->
+          <div class="player player--idle" id="playerIdle" role="img" aria-label="Jugador con uniforme azul obscuro y blanco con logo de TiTi-apps">
+            <!-- SVG: jugador arms down -->
+            <svg viewBox="0 0 520 520" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity="0.35"/>
+                </filter>
+                <linearGradient id="helmet" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0b1a2b"/>
+                  <stop offset="1" stop-color="#173a66"/>
+                </linearGradient>
+                <linearGradient id="jersey" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0a1930"/>
+                  <stop offset="1" stop-color="#0d2a57"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Sombra -->
+              <ellipse cx="260" cy="486" rx="150" ry="24" fill="rgba(0,0,0,0.25)"/>
+
+              <!-- Jugador -->
+              <g filter="url(#shadow)">
+                <!-- Piernas -->
+                <path d="M210 330 C205 390, 205 410, 185 470 L230 470 C250 430, 245 395, 250 330 Z" fill="#ffffff" opacity="0.95"/>
+                <path d="M310 330 C315 390, 315 410, 335 470 L290 470 C270 430, 275 395, 270 330 Z" fill="#ffffff" opacity="0.92"/>
+
+                <!-- Zapatos -->
+                <path d="M170 470 C195 490, 225 492, 248 486 L248 505 C215 514, 185 510, 160 494 Z" fill="#0b1a2b"/>
+                <path d="M350 470 C325 490, 295 492, 272 486 L272 505 C305 514, 335 510, 360 494 Z" fill="#0b1a2b"/>
+
+                <!-- Torso / jersey -->
+                <path d="M170 210 C205 170, 315 170, 350 210
+                         C370 232, 388 270, 375 312
+                         C365 345, 330 368, 260 368
+                         C190 368, 155 345, 145 312
+                         C132 270, 150 232, 170 210 Z"
+                      fill="url(#jersey)"/>
+
+                <!-- Rayas blancas -->
+                <path d="M175 230 C210 205, 310 205, 345 230
+                         C350 235, 356 246, 358 255
+                         C320 230, 200 230, 162 255
+                         C164 246, 170 235, 175 230 Z"
+                      fill="#ffffff" opacity="0.9"/>
+
+                <!-- “Logo” TiTi-apps al centro (reemplazable) -->
+                <rect x="170" y="255" width="180" height="74" rx="18" fill="#ffffff" opacity="0.96"/>
+                <text x="260" y="300" text-anchor="middle"
+                      font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+                      font-size="28" font-weight="800" fill="#0b1a2b">
+                  TiTi-apps
+                </text>
+
+                <!-- Brazos (posición normal) -->
+                <path d="M148 245 C110 270, 104 300, 112 330
+                         C118 352, 140 362, 158 350
+                         C170 342, 176 324, 172 305
+                         C168 286, 172 265, 190 252 Z"
+                      fill="#ffffff" opacity="0.95"/>
+                <path d="M372 245 C410 270, 416 300, 408 330
+                         C402 352, 380 362, 362 350
+                         C350 342, 344 324, 348 305
+                         C352 286, 348 265, 330 252 Z"
+                      fill="#ffffff" opacity="0.92"/>
+
+                <!-- Cuello / cabeza -->
+                <rect x="238" y="190" width="44" height="36" rx="12" fill="#ffffff" opacity="0.95"/>
+                <circle cx="260" cy="160" r="60" fill="url(#helmet)"/>
+
+                <!-- Visor -->
+                <path d="M216 160 C235 132, 285 132, 304 160
+                         C285 178, 235 178, 216 160 Z"
+                      fill="rgba(255,255,255,0.25)"/>
+                <path d="M215 160 C235 140, 285 140, 305 160" stroke="rgba(255,255,255,0.55)" stroke-width="4" fill="none"/>
+
+                <!-- Balón -->
+                <g transform="translate(70,320) rotate(-15)">
+                  <ellipse cx="0" cy="0" rx="52" ry="36" fill="#7a4a1f"/>
+                  <path d="M-35 0 H35" stroke="#fff" stroke-width="4" opacity="0.9"/>
+                  <path d="M0 -20 V20" stroke="#fff" stroke-width="3" opacity="0.8"/>
+                  <path d="M-12 -6 H12 M-12 0 H12 M-12 6 H12" stroke="#fff" stroke-width="2" opacity="0.9"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Estado 2: Jugador celebrando -->
+          <div class="player player--celebrate hidden" id="playerCelebrate" role="img" aria-label="Jugador de TiTi-apps celebrando con los brazos en alto">
+            <!-- SVG: jugador arms up -->
+            <svg viewBox="0 0 520 520" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="shadow2" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity="0.35"/>
+                </filter>
+                <linearGradient id="helmet2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0b1a2b"/>
+                  <stop offset="1" stop-color="#173a66"/>
+                </linearGradient>
+                <linearGradient id="jersey2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#0a1930"/>
+                  <stop offset="1" stop-color="#0d2a57"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Sombra -->
+              <ellipse cx="260" cy="486" rx="150" ry="24" fill="rgba(0,0,0,0.25)"/>
+
+              <g filter="url(#shadow2)">
+                <!-- Piernas -->
+                <path d="M210 330 C205 390, 205 410, 185 470 L230 470 C250 430, 245 395, 250 330 Z" fill="#ffffff" opacity="0.95"/>
+                <path d="M310 330 C315 390, 315 410, 335 470 L290 470 C270 430, 275 395, 270 330 Z" fill="#ffffff" opacity="0.92"/>
+
+                <!-- Zapatos -->
+                <path d="M170 470 C195 490, 225 492, 248 486 L248 505 C215 514, 185 510, 160 494 Z" fill="#0b1a2b"/>
+                <path d="M350 470 C325 490, 295 492, 272 486 L272 505 C305 514, 335 510, 360 494 Z" fill="#0b1a2b"/>
+
+                <!-- Torso -->
+                <path d="M170 210 C205 170, 315 170, 350 210
+                         C370 232, 388 270, 375 312
+                         C365 345, 330 368, 260 368
+                         C190 368, 155 345, 145 312
+                         C132 270, 150 232, 170 210 Z"
+                      fill="url(#jersey2)"/>
+
+                <!-- Rayas -->
+                <path d="M175 230 C210 205, 310 205, 345 230
+                         C350 235, 356 246, 358 255
+                         C320 230, 200 230, 162 255
+                         C164 246, 170 235, 175 230 Z"
+                      fill="#ffffff" opacity="0.9"/>
+
+                <!-- Logo -->
+                <rect x="170" y="255" width="180" height="74" rx="18" fill="#ffffff" opacity="0.96"/>
+                <text x="260" y="300" text-anchor="middle"
+                      font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
+                      font-size="28" font-weight="900" fill="#0b1a2b">
+                  TiTi-apps
+                </text>
+
+                <!-- Brazos arriba (celebración) -->
+                <path d="M165 230 C120 185, 105 150, 120 120
+                         C130 100, 155 100, 170 116
+                         C185 132, 182 165, 195 195
+                         C205 220, 210 240, 200 252 Z"
+                      fill="#ffffff" opacity="0.95"/>
+                <path d="M355 230 C400 185, 415 150, 400 120
+                         C390 100, 365 100, 350 116
+                         C335 132, 338 165, 325 195
+                         C315 220, 310 240, 320 252 Z"
+                      fill="#ffffff" opacity="0.92"/>
+
+                <!-- Cabeza -->
+                <rect x="238" y="190" width="44" height="36" rx="12" fill="#ffffff" opacity="0.95"/>
+                <circle cx="260" cy="160" r="60" fill="url(#helmet2)"/>
+
+                <!-- Visor -->
+                <path d="M216 160 C235 132, 285 132, 304 160
+                         C285 178, 235 178, 216 160 Z"
+                      fill="rgba(255,255,255,0.25)"/>
+                <path d="M215 160 C235 140, 285 140, 305 160" stroke="rgba(255,255,255,0.55)" stroke-width="4" fill="none"/>
+
+                <!-- Confeti -->
+                <g opacity="0.95">
+                  <circle cx="90" cy="120" r="6" fill="#ffffff"/>
+                  <circle cx="430" cy="110" r="6" fill="#ffffff"/>
+                  <circle cx="460" cy="180" r="5" fill="#ffffff"/>
+                  <circle cx="60" cy="200" r="5" fill="#ffffff"/>
+                  <path d="M80 80 L100 100" stroke="#ffffff" stroke-width="4" />
+                  <path d="M440 70 L420 95" stroke="#ffffff" stroke-width="4" />
+                  <path d="M470 145 L445 160" stroke="#ffffff" stroke-width="4" />
+                  <path d="M55 155 L80 170" stroke="#ffffff" stroke-width="4" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__right">
+        <div class="card">
+          <h1 class="question">Para ver el partido, ¿Puedo pedir Hamburguesas y Coquitas?</h1>
+
+          <div class="actions" id="actions">
+            <button class="btn btn--yes" id="yesBtn" type="button">Sí</button>
+            <button class="btn btn--no" id="noBtn" type="button">No</button>
+          </div>
+
+          <p class="hint" id="hint">Tip: intenta darle click a “No”… si puedes 😄</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Hecho para GitHub Pages · TiTi-apps</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
